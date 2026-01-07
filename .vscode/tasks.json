@@ -1,0 +1,38 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Vanguard-Edge",
+      "type": "shell",
+      "command": "go",
+      "args": ["build", "-o", "./bin/vanguard-edge", "./cmd/node"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": ["$tsc"]
+    },
+    {
+      "label": "Run Vanguard-Edge",
+      "type": "shell",
+      "command": "go",
+      "args": ["run", "./cmd/node"],
+      "isBackground": true,
+      "problemMatcher": {
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": ".",
+          "endsPattern": "shutting down"
+        }
+      }
+    },
+    {
+      "label": "Test Vanguard-Edge",
+      "type": "shell",
+      "command": "go",
+      "args": ["test", "./..."],
+      "problemMatcher": ["$tsc"]
+    }
+  ]
+}
